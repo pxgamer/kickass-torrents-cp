@@ -6,7 +6,7 @@ A community project revival of the original Kickass Torrents.
 To test the project, all you need to do is download the latest release from [the releases tab][latest].
 
 ## Adding an issue
-Issues can be added to Github via the [Issues tab][issues] and should follow the format specified [here][example-issue]
+Issues can be added to Github via the [Issues tab][issues] and should follow the format specified [here][example-issue].
 
 ## Contributing to the project
 - Clone the git repository using `git clone https://github.com/PXgamer/kickass-torrents-cp`
