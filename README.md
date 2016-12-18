@@ -2,6 +2,8 @@
 
 A community project revival of the original Kickass Torrents.
 
+_Please note, this is not currently finished._
+
 ## Testing the project
 To test the project, all you need to do is download the latest release from [the releases tab][latest].
 
