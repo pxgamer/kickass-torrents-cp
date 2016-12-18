@@ -1,0 +1,15 @@
+{
+    "name": "pxgamer/kickass-torrents-ci",
+    "description": "A community project revival of Kickass Torrents.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PXgamer",
+            "email": "owzie123@gmail.com"
+        }
+    ],
+    "require": {
+	    "php": ">=5.5.0"
+	}
+}
