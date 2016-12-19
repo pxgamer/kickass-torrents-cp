@@ -1,105 +1,9 @@
 <?php 
 	class U extends CI_Model {
 
-	
-	
 	function __construct() {
 		parent::__construct();
-		
-
 	}
-
-
-	// function advanced_search($input = null, $page = 1, $sort = 'title', $order = 'asc') {
-	// 	if (!$input) return false;
-	// 	$input = preg_replace_callback('#\"([^"]*)\"#', function($m){
-	// 		return('"'. str_replace(' ', '%20', $m[1]) .'"');
-	// 	}, $input);
-	// 	$input = preg_replace_callback('#\"([^"]*)\"#', function($m){
-	// 		return('"'. str_replace('|', '%7B', $m[1]) .'"');
-	// 	}, $input);
-	// 	$input = str_replace('"|"', '"|"', str_replace('| ', ' ', $input));
-	// 	$parts = explode(' ', $input);
-	// 	$i=0;
-	// 	foreach ($parts as $part) {
-	// 		$partsb[$i] = explode('|', $part);
-	// 		$i++;
-	// 	}
-
-	// 	$match = 'genre|year|id|rating|director|writer|cast|plot';
-	// 	$match = '/^(-*)('.$match.'):(.*)/i';
-		
-	// 	$this->db->select('*')->from('movies');
-	// 	foreach ($partsb as $part) {
-	// 		$this->db->group_start();
-	// 		$or_index=false;
-	// 		foreach($part as $subPart) {
-	// 			$field_to_search = 'title';
-	// 			$value_to_match = $subPart;
-	// 			$not_to_match = false;
-	// 			if (preg_match($match, $subPart)) {
-	// 				preg_match($match, $subPart, $m);
-	// 				$not_to_match = $m[1]?true:false;
-	// 				$field_to_search = $m[2];
-	// 				$value_to_match = $m[3];
-	// 			}
-	// 			$this->query_template($field_to_search, $value_to_match, $or_index, $not_to_match);
-	// 			$or_index = true;
-	// 		}
-	// 		$this->db->group_end();
-	// 	}
-	// 	$this->db->order_by($sort, $order);
-	// 	$this->db->limit(10, ($page-1)*10);
-	// 	$result = $this->db->get()->result();
-	// 	print '<div style="margin-left:15px;"><a class="btn btn-default" style="margin-bottom:5px;" onclick="$(this).next().toggle();">Toggle pre element</a><pre style="display:none;">Last:'.$this->db->last_query().'</pre></div>';
-	// 	return $result;
-	// }
-
-	// function query_template($field = null, $value = null, $or = false, $not = false) {
-	// 	$field = rtrim($field, 's');
-	// 	if ($field=='director') $field = 'directors';
-	// 	if ($field=='writer') $field = 'writers';
-		
-	// 	$value = str_replace('%20', ' ', ltrim(rtrim($value, '"'), '"'));
-
-		
-	// 	if ($or) {
-	// 		$this->db->or_group_start();
-	// 	} else {
-	// 		$this->db->group_start();
-	// 	}
-	// 	switch($field) {
-	// 		case 'genre':
-	// 		case 'cast':
-	// 		case 'writers':
-	// 		case 'directors':
-	// 			if ($not) {
-	// 				$this->db->not_like($field, $value, 'none');
-	// 				$this->db->not_like($field, $value.'|', 'after');
-	// 				$this->db->not_like($field, '|'.$value, 'before');
-	// 				$this->db->not_like($field, '|'.$value.'|');
-	// 			}else{
-	// 				$this->db->like($field, $value, 'none');
-	// 				$this->db->or_like($field, $value.'|', 'after');
-	// 				$this->db->or_like($field, '|'.$value, 'before');
-	// 				$this->db->or_like($field, '|'.$value.'|');
-	// 			}
-	// 			break;
-	// 		case 'year':
-	// 		case 'rating':
-	// 			$value = (int) $value;
-	// 			$this->db->where($field, $value);
-	// 			break;
-	// 		case 'plot':
-	// 			$this->db->like($field, $value);
-	// 			break;
-	// 		case 'title':
-	// 		default:
-	// 			$this->db->like('title', $value);
-	// 			$this->db->or_like('year', $value);
-	// 	}
-	// 	$this->db->group_end();
-	// }
 
 	function getUserByName($username = '', $everything = false) {
 		$user = new stdClass;
@@ -133,7 +37,7 @@
 	}
 	function attemptLogin($email = '', $password = '') {
 		$account = $this->db->query("SELECT * FROM users_sensitive WHERE email = ?", array($email))->row();
-		if ($account->password) {
+		if (isset($account) && $account->password) {
 			if (password_verify($password, $account->password)) {
 				// print 'password_verify true';
 				// printDie($account);
